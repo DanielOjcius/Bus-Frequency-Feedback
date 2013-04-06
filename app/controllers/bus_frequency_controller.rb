@@ -11,7 +11,7 @@ class BusFrequencyController < ApplicationController
 
 	def bus_number
 		bus_frequencies = BusFrequency.where(:bus_no => params[:bus_no])
-		render :text => 'not found' and return if bus_frequency.empty?
+		render :text => 'not found' and return if bus_frequencies.empty?
 		render :json => bus_frequencies.map{|bus| bus.attributes.except("id", "created_at", "updated_at", "bus_no")}.to_json
 	end
 end
