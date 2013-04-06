@@ -1,0 +1,29 @@
+$(function() {
+ var drawVisualization = function(data1) {
+        // Create and draw the visualization.
+        new google.visualization.ColumnChart(document.getElementById('visualization')).
+            draw(data1,
+                 {title:"",
+                  width:600, height:400,
+                  hAxis: {title: "Bus frequency feedback"}}
+            );
+      }
+
+
+     var consolidateData = function(data){
+      return [['Time range', 'Too high', 'Too low']].concat($.map(data, function(bus){
+        return  [[bus.time_range, bus.high, bus.low]]; 
+      }));
+     };
+
+     $.ajax({
+        url: "/bus_frequencies/bus_number/" + $("#bus_no").text(),
+        dataType: "json",
+        success: function(data){
+          console.log("called");
+          data= consolidateData(data);
+          var a = google.visualization.arrayToDataTable(data);
+          google.setOnLoadCallback(drawVisualization(a));
+        }
+      });
+    });
