@@ -7,7 +7,7 @@ class BusFrequencyController < ApplicationController
 	end
 
 	def bus_number
-		bus_frequency = BusFrequency.find_by_bus_no(params[:bus_no]).to_json
-		render :json => bus_frequency
+		bus_frequency = BusFrequency.find_by_bus_no(params[:bus_no])
+		render :json => bus_frequency.attributes.except("id", "created_at", "updated_at").to_json
 	end
 end
