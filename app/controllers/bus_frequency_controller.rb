@@ -4,6 +4,7 @@ class BusFrequencyController < ApplicationController
 	end
 	def register
 		frequency = params[:frequency]
+		render :text => 'bus number invalid', :status => 404 and return unless BusList.has_bus_no(params[:bus_no])
 		bus_frequency = BusFrequency.where(:bus_no => params[:bus_no], :time_range => params[:range]).first_or_create
 		bus_frequency.update_attribute(frequency, bus_frequency.send(frequency) + 1)
 		render :text => 'registered', :status => 200
