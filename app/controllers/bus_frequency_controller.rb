@@ -5,4 +5,9 @@ class BusFrequencyController < ApplicationController
 		bus_frequency.update_attribute(frequency, bus_frequency.send(frequency) + 1)
 		render :text => 'registered'
 	end
+
+	def bus_number
+		bus_frequency = BusFrequency.find_by_bus_no(params[:bus_no]).to_json
+		render :json => bus_frequency
+	end
 end
