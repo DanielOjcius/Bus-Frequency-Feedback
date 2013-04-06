@@ -1,4 +1,7 @@
 BffService::Application.routes.draw do
+  scope :path => '/bus_frequencies', :controller => :bus_frequency do
+    post '/register', :action => 'register'
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406101457) do
+ActiveRecord::Schema.define(:version => 20130406111250) do
 
   create_table "bus_frequencies", :force => true do |t|
     t.string   "bus_no"
     t.string   "time_range"
-    t.integer  "low"
-    t.integer  "high"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "low",        :default => 0
+    t.integer  "high",       :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
 end
