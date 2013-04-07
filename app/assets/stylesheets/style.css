@@ -1,0 +1,37 @@
+@charset "ISO-8859-1";
+/* CSS Document */
+
+body {
+	background-image:url(/assets/bg.png);
+}
+
+.wrapper {
+	width: 925px;
+	margin: 0 auto;
+	background-color:#fff;
+	min-height:1000px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 10px #CCC;
+}
+
+#chart_div, #visualization{
+	margin-left: auto;
+	margin-right: auto;
+}
+h3{
+	margin-left:50px;
+}
+h1 {
+	
+	padding:8px 30px 0px 30px;
+	font-family: Tahoma, Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	height: 25px;
+	background-color:#ccc;
+	background-image:url(/assets/header-bg.png);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-shadow: 1px 1px 1px #CCC;
+}
+
