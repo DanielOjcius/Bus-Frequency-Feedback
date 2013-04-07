@@ -1,6 +1,6 @@
 $(function() {
 
- function drawChart(event, data) {
+ function drawChart(data) {
         // Create and draw the visualization.
         window.data = data;
         window.tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
@@ -15,8 +15,6 @@ $(function() {
         google.visualization.events.addListener(tree, 'select', selectHandler);
   };
   
-
-        
 
 // // Notice that e is not used or needed.
   function selectHandler(e) {
@@ -38,7 +36,7 @@ $(function() {
             console.log("called");
             data= consolidateData(data, type);
             var a = google.visualization.arrayToDataTable(data);
-            google.setOnLoadCallback(drawChart("", a));
+            drawChart(a);
           }
         });
      };
