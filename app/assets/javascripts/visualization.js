@@ -15,7 +15,6 @@ $(function() {
         google.visualization.events.addListener(tree, 'select', selectHandler);
   };
   
-  google.setOnLoadCallback(drawChart);
 
         
 
