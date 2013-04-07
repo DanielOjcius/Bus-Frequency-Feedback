@@ -5,9 +5,9 @@ $(function() {
         window.data = data;
         window.tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
         tree.draw(data, {
-          minColor: '#f00',
-          midColor: '#ddd',
-          maxColor: '#0d0',
+          minColor: '#F7CBCB',
+          midColor: '#FA6E6E',
+          maxColor: '#FF0000',
           headerHeight: 15,
           fontColor: 'black',
           showScale: true});
