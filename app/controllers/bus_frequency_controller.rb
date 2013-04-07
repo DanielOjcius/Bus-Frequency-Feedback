@@ -1,6 +1,14 @@
 class BusFrequencyController < ApplicationController
-	def index
+	def index 
+	end
+
+	def bus
 		@bus_no = params[:bus_no]
+	end
+
+	def high_frequency_feedback
+		# Order.select("date(created_at) as ordered_date, sum(price) as total_price").group("date(created_at)")
+		render :json => BusFrequency.select("bus_no, sum(low) as total").group("bus_no").to_json
 	end
 	def register
 		frequency = params[:frequency]
