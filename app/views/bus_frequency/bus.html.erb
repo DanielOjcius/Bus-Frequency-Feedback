@@ -16,11 +16,12 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
     </script>
 
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <%= javascript_include_tag 'bus'%>
   </head>
   <body style="font-family: Arial;border: 0 none;">
     <h3>Details of bus <span id ="bus_no"><%= @bus_no%></span></h3>
     <div id="visualization" style="width: 600px; height: 400px;"></div>
   </body>
 </html>
-​
+​<% content_for :javascript do %>
+  <%= javascript_include_tag 'bus'%>
+<% end %>

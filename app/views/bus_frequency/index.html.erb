@@ -4,7 +4,6 @@
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["treemap"]});
     </script>
-    <%= javascript_include_tag 'visualization'%>
   </head>
 
   <body>
@@ -15,3 +14,6 @@
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
   </body>
 </html>
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'visualization'%>
+<% end %>
