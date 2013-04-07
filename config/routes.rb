@@ -4,6 +4,7 @@ BffService::Application.routes.draw do
     get '/bus_number/:bus_no', :action => 'bus_number', :as => :bus_frequency
     get '/bus/:bus_no', :action => 'bus'
     get '/bus_high', :action => 'high_frequency_feedback'
+    get '/bus_low', :action => 'low_frequency_feedback'
     get '/visualization', :action => 'index'
   end
   # The priority is based upon order of creation:

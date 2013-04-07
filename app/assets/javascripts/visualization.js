@@ -2,6 +2,7 @@ $(function() {
 
  function drawChart(data) {
         // Create and draw the visualization.
+        window.data = data;
         window.tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
         tree.draw(data, {
           minColor: '#f00',
@@ -19,24 +20,33 @@ $(function() {
         
 
 // // Notice that e is not used or needed.
-//   function selectHandler(e) {
-//     console.log('The user selected' + e +  tree.getSelection().length + ' items.');
-//   }
-     var consolidateData = function(data){
-      return [['Location', 'Parent', 'Total'], ['Bus With low freq',null,0]].concat($.map(data, function(bus){
-        return  [[bus.bus_no, 'Bus With low freq', bus.total]]; 
+  function selectHandler(e) {
+    var bus_no = data.getFormattedValue(tree.getSelection()[0].row,0);
+    window.location.replace('/bus_frequencies/bus/' + bus_no);
+  }
+
+     var consolidateData = function(data, type){
+      return [['Location', 'Parent', 'Total'], ['Bus With ' + type + ' freq',null,0]].concat($.map(data, function(bus){
+        return  [[bus.bus_no, 'Bus With ' + type + ' freq', bus.total]]; 
       }));
      };
 
+     var load_frequency_chart = function(type){
+      $.ajax({
+          url: "/bus_frequencies/bus_" + type,
+          dataType: "json",
+          success: function(data){
+            console.log("called");
+            data= consolidateData(data, type);
+            var a = google.visualization.arrayToDataTable(data);
+            google.setOnLoadCallback(drawChart(a));
+          }
+        });
+     };
+     load_frequency_chart("low");
 
-    $.ajax({
-        url: "/bus_frequencies/bus_high",
-        dataType: "json",
-        success: function(data){
-          console.log("called");
-          data= consolidateData(data);
-          var a = google.visualization.arrayToDataTable(data);
-          google.setOnLoadCallback(drawChart(a));
-        }
-      });
+     $("#freq").change(function(){
+      load_frequency_chart($(this).val());
+     });
+
 });
