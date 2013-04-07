@@ -24,7 +24,7 @@ $(function() {
 
      var consolidateData = function(data, type){
       return [['Location', 'Parent', 'Total'], ['Bus With ' + type + ' freq',null,0]].concat($.map(data, function(bus){
-        return  [[bus.bus_no, 'Bus With ' + type + ' freq', bus.total]]; 
+        return  [[bus.bus_no, 'Bus With ' + type + ' freq', parseInt(bus.total)]]; 
       }));
      };
 
