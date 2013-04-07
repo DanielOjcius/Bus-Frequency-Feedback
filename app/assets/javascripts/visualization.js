@@ -1,6 +1,6 @@
 $(function() {
 
- function drawChart(data) {
+ function drawChart(event, data) {
         // Create and draw the visualization.
         window.data = data;
         window.tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
@@ -39,7 +39,7 @@ $(function() {
             console.log("called");
             data= consolidateData(data, type);
             var a = google.visualization.arrayToDataTable(data);
-            google.setOnLoadCallback(drawChart(a));
+            google.setOnLoadCallback(drawChart("", a));
           }
         });
      };
